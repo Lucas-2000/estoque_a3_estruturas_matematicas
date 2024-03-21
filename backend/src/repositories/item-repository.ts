@@ -1,10 +1,10 @@
 import { Item } from "../entities/item";
 
 export interface ItemRepository {
-  create(item: Item): void;
-  findAll(): Item[];
-  findBySku(sku: string): Item | undefined;
-  findIndex(sku: string): number;
-  update(item: Item): void;
-  delete(sku: string): void;
+  create(item: Item): Promise<void>;
+  findAll(): Promise<Item[]>;
+  findBySku(sku: string): Promise<Item | undefined>;
+  findIndex(sku: string): Promise<number>;
+  update(item: Item): Promise<void>;
+  delete(sku: string): Promise<void>;
 }

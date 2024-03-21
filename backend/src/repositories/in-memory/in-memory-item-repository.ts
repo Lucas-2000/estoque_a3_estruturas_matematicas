@@ -4,19 +4,19 @@ import { ItemRepository } from "../item-repository";
 export class InMemoryItemRepository implements ItemRepository {
   private items: Item[] = [];
 
-  create(item: Item): void {
+  async create(item: Item): Promise<void> {
     this.items.push(item);
   }
 
-  findAll(): Item[] {
+  async findAll(): Promise<Item[]> {
     return this.items;
   }
 
-  findBySku(sku: string): Item | undefined {
+  async findBySku(sku: string): Promise<Item | undefined> {
     return this.items.find((item) => item.sku === sku);
   }
 
-  findIndex(sku: string): number {
+  async findIndex(sku: string): Promise<number> {
     const index = this.items.findIndex((obj) => obj.sku === sku);
 
     if (index < 0) return -1;
@@ -24,7 +24,7 @@ export class InMemoryItemRepository implements ItemRepository {
     return index;
   }
 
-  update(item: Item): void {
+  async update(item: Item): Promise<void> {
     const itemToUpdate = this.items.find((i) => i.sku === item.sku);
 
     if (itemToUpdate !== undefined) {
@@ -32,7 +32,7 @@ export class InMemoryItemRepository implements ItemRepository {
     }
   }
 
-  delete(sku: string): void {
+  async delete(sku: string): Promise<void> {
     const itemIndex = this.items.findIndex((item) => item.sku === sku);
 
     if (itemIndex !== -1) {

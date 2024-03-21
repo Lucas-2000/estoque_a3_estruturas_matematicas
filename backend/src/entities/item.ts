@@ -6,8 +6,13 @@ export class Item {
   weight: number;
 
   constructor() {
-    this.sku = this.generateSku();
-    this.lot = this.generateLot();
+    if (!this.sku) {
+      this.sku = this.generateSku();
+    }
+
+    if (!this.lot) {
+      this.lot = this.generateLot();
+    }
   }
 
   private generateSku(): string {
@@ -15,12 +20,12 @@ export class Item {
     const letters = "abcdefghijklmnopqrstuvwxys";
     let result = "";
 
-    while (result.length <= 3) {
+    while (result.length < 3) {
       let randomIndex = Math.floor(Math.random() * numbers.length);
       result += numbers.charAt(randomIndex);
     }
 
-    while (result.length <= 5) {
+    while (result.length < 8) {
       let randomIndex = Math.floor(Math.random() * letters.length);
       result += letters.charAt(randomIndex).toUpperCase();
     }
@@ -28,9 +33,11 @@ export class Item {
     const now = new Date();
     const hour = ("0" + now.getHours()).slice(-2);
     const minute = ("0" + now.getMinutes()).slice(-2);
+    const day = now.getDay();
+    const month = now.getDate();
     const year = now.getFullYear();
 
-    result += hour + minute + year;
+    result += hour + minute + day + month + year;
 
     return result;
   }
@@ -41,9 +48,11 @@ export class Item {
     const now = new Date();
     const hour = ("0" + now.getHours()).slice(-2);
     const minute = ("0" + now.getMinutes()).slice(-2);
+    const day = now.getDay();
+    const month = now.getDate();
     const year = now.getFullYear();
 
-    result += hour + minute + year;
+    result += hour + minute + day + month + year;
 
     return result;
   }
