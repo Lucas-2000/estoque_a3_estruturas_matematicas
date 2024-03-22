@@ -1,6 +1,6 @@
-import { CustomError } from "./../../utils/custom-error";
-import { ItemRepository } from "./../../repositories/item-repository";
-import { Item } from "../../entities/item";
+import { CustomError } from "../../../utils/custom-error";
+import { ItemRepository } from "../../../repositories/item-repository";
+import { Item } from "../../../entities/item";
 
 interface CreateItemRequest {
   name: string;

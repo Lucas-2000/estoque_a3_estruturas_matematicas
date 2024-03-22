@@ -1,5 +1,5 @@
-import { ItemRepository } from "../../repositories/item-repository";
-import { CustomError } from "../../utils/custom-error";
+import { ItemRepository } from "../../../repositories/item-repository";
+import { CustomError } from "../../../utils/custom-error";
 
 interface DeleteItemRequest {
   sku: string;

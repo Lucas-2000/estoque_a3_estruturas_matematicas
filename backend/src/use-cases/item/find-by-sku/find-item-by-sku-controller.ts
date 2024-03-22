@@ -1,4 +1,4 @@
-import { CustomError } from "../../utils/custom-error";
+import { CustomError } from "../../../utils/custom-error";
 import { Request, Response } from "express";
 import { FindItemBySkuUseCase } from "./find-item-by-sku-use-case";
 

@@ -1,6 +1,6 @@
-import { Item } from "../../entities/item";
-import { ItemRepository } from "../../repositories/item-repository";
-import { CustomError } from "../../utils/custom-error";
+import { Item } from "../../../entities/item";
+import { ItemRepository } from "../../../repositories/item-repository";
+import { CustomError } from "../../../utils/custom-error";
 
 interface FindItemBySkuRequest {
   sku: string;

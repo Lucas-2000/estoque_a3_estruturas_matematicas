@@ -1,5 +1,5 @@
-import { Item } from "../../entities/item";
-import { ItemRepository } from "../../repositories/item-repository";
+import { Item } from "../../../entities/item";
+import { ItemRepository } from "../../../repositories/item-repository";
 
 type FindAllItemsResponse = Item[];
 

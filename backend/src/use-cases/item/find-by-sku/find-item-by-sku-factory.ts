@@ -1,4 +1,4 @@
-import { ItemRepository } from "../../repositories/item-repository";
+import { ItemRepository } from "../../../repositories/item-repository";
 import { FindItemBySkuController } from "./find-item-by-sku-controller";
 import { FindItemBySkuUseCase } from "./find-item-by-sku-use-case";
 
