@@ -1,4 +1,4 @@
-import { ItemRepository } from "../../repositories/item-repository";
+import { ItemRepository } from "../../../repositories/item-repository";
 import { DeleteItemController } from "./delete-item-controller";
 import { DeleteItemUseCase } from "./delete-item-use-case";
 

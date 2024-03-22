@@ -1,6 +1,6 @@
-import { CustomError } from "../../utils/custom-error";
 import { Request, Response } from "express";
 import { UpdateItemUseCase } from "./update-items-use-case";
+import { CustomError } from "../../../utils/custom-error";
 
 export class UpdateItemController {
   constructor(private updateItemUseCase: UpdateItemUseCase) {}

@@ -1,4 +1,4 @@
-import { CustomError } from "../../utils/custom-error";
+import { CustomError } from "../../../utils/custom-error";
 import { CreateItemUseCase } from "./create-item-use-case";
 import { Request, Response } from "express";
 

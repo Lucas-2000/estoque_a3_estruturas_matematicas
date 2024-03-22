@@ -39,7 +39,7 @@ export class InMemoryStockRepository implements StockRepository {
   async findItem(item: Item): Promise<Item | null> {
     for (let i = 0; i < this.stock.length; i++) {
       for (let j = 0; j < this.stock[i].length; j++) {
-        if (this.stock[i][j] === item) {
+        if (this.stock[i][j]?.sku === item.sku) {
           return item;
         }
       }
@@ -67,6 +67,15 @@ export class InMemoryStockRepository implements StockRepository {
 
   async isEmptySpace(row: number, column: number): Promise<boolean> {
     return this.stock[row][column] === null;
+  }
+
+  async isValidInterval(row: number, column: number): Promise<boolean> {
+    return (
+      row >= 0 &&
+      row < this.stock.length &&
+      column >= 0 &&
+      column < this.stock[0].length
+    );
   }
 
   async show(): Promise<(Item | null)[][]> {

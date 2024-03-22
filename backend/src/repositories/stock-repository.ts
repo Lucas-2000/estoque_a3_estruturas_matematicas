@@ -8,5 +8,6 @@ export interface StockRepository {
   findByRowAndColumn(row: number, column: number): Promise<Item | null>;
   findEmptySpaces(): Promise<{ row: number; column: number }[]>;
   isEmptySpace(row: number, column: number): Promise<boolean>;
+  isValidInterval(row: number, column: number): Promise<boolean>;
   show(): Promise<(Item | null)[][]>;
 }

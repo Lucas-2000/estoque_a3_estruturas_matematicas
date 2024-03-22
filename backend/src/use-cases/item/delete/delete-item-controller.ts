@@ -1,6 +1,6 @@
-import { CustomError } from "../../utils/custom-error";
 import { Request, Response } from "express";
 import { DeleteItemUseCase } from "./delete-item-use-case";
+import { CustomError } from "../../../utils/custom-error";
 
 export class DeleteItemController {
   constructor(private deleteItemUseCase: DeleteItemUseCase) {}

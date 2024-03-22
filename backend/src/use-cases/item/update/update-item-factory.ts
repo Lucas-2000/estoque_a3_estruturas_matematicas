@@ -1,4 +1,4 @@
-import { ItemRepository } from "../../repositories/item-repository";
+import { ItemRepository } from "../../../repositories/item-repository";
 import { UpdateItemController } from "./update-items-controller";
 import { UpdateItemUseCase } from "./update-items-use-case";
 

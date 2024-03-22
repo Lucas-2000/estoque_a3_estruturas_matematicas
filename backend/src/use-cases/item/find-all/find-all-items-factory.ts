@@ -1,4 +1,4 @@
-import { ItemRepository } from "../../repositories/item-repository";
+import { ItemRepository } from "../../../repositories/item-repository";
 import { FindAllItemsController } from "./find-all-items-controller";
 import { FindAllItemsUseCase } from "./find-all-items-use-case";
 
