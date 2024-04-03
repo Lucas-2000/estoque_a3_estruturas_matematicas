@@ -3,9 +3,11 @@ import "express-async-errors";
 import { itemRoutes } from "./routes/item.routes";
 import { stockRoutes } from "./routes/stock.routes";
 import { errorHandler } from "./middlewares/error-handler";
+import cors from "cors";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/items", itemRoutes);
