@@ -1,3 +1,4 @@
+import { findItemFactory } from "./../use-cases/stock/find-item/find-item-factory";
 import { moveItemFactory } from "./../use-cases/stock/move-item/move-item-factory";
 import { removeItemFactory } from "./../use-cases/stock/remove-item/remove-item-factory";
 import { Router, Request, Response } from "express";
@@ -24,6 +25,10 @@ stockRoutes.delete("/:sku", (req: Request, res: Response) => {
 
 stockRoutes.post("/move", (req: Request, res: Response) => {
   return moveItemFactory(stockRepository, itemRepository).handle(req, res);
+});
+
+stockRoutes.get("/:sku", (req: Request, res: Response) => {
+  return findItemFactory(stockRepository, itemRepository).handle(req, res);
 });
 
 export { stockRoutes };
