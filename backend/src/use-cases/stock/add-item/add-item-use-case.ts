@@ -39,7 +39,7 @@ export class AddItemUseCase {
     if (!isEmpty)
       return new CustomError(true, "O espaço inserido já possui um item", 400);
 
-    const itemIsAlreadyOnStock = await this.stockRepository.findItem(item);
+    const itemIsAlreadyOnStock = await this.stockRepository.findItem(item.sku);
 
     if (itemIsAlreadyOnStock !== null)
       return new CustomError(true, "O item já está no estoque", 400);

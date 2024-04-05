@@ -6,6 +6,7 @@ import { InMemoryStockRepository } from "./../repositories/in-memory/in-memory-s
 import { addItemFactory } from "../use-cases/stock/add-item/add-item-factory";
 import { itemRepository } from "./item.routes";
 import { showStockFactory } from "../use-cases/stock/show/show-stock-factory";
+import { findItemByRowAndColumnFactory } from "../use-cases/stock/find-item-by-row-and-column/find-item-by-row-and-column-factory";
 
 const stockRoutes = Router();
 
@@ -29,6 +30,10 @@ stockRoutes.post("/move", (req: Request, res: Response) => {
 
 stockRoutes.get("/:sku", (req: Request, res: Response) => {
   return findItemFactory(stockRepository, itemRepository).handle(req, res);
+});
+
+stockRoutes.get("/row/:row/column/:column", (req: Request, res: Response) => {
+  return findItemByRowAndColumnFactory(stockRepository).handle(req, res);
 });
 
 export { stockRoutes };
