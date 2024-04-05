@@ -14,10 +14,10 @@ export class InMemoryStockRepository implements StockRepository {
     this.stock[row][column] = item;
   }
 
-  async removeItem(item: Item): Promise<void> {
+  async removeItem(sku: string): Promise<void> {
     for (let i = 0; i < this.stock.length; i++) {
       for (let j = 0; j < this.stock[i].length; j++) {
-        if (this.stock[i][j] === item) {
+        if (this.stock[i][j]?.sku === sku) {
           this.stock[i][j] = null;
           return;
         }
