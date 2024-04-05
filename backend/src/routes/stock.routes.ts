@@ -1,3 +1,4 @@
+import { moveItemFactory } from "./../use-cases/stock/move-item/move-item-factory";
 import { removeItemFactory } from "./../use-cases/stock/remove-item/remove-item-factory";
 import { Router, Request, Response } from "express";
 import { InMemoryStockRepository } from "./../repositories/in-memory/in-memory-stock-repository";
@@ -19,6 +20,10 @@ stockRoutes.get("/", (req: Request, res: Response) => {
 
 stockRoutes.delete("/:sku", (req: Request, res: Response) => {
   return removeItemFactory(stockRepository, itemRepository).handle(req, res);
+});
+
+stockRoutes.post("/move", (req: Request, res: Response) => {
+  return moveItemFactory(stockRepository, itemRepository).handle(req, res);
 });
 
 export { stockRoutes };
