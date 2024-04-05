@@ -1,3 +1,4 @@
+import { findEmptySpacesFactory } from "./../use-cases/stock/find-empty-spaces/find-empty-spaces-factory";
 import { findItemFactory } from "./../use-cases/stock/find-item/find-item-factory";
 import { moveItemFactory } from "./../use-cases/stock/move-item/move-item-factory";
 import { removeItemFactory } from "./../use-cases/stock/remove-item/remove-item-factory";
@@ -34,6 +35,10 @@ stockRoutes.get("/:sku", (req: Request, res: Response) => {
 
 stockRoutes.get("/row/:row/column/:column", (req: Request, res: Response) => {
   return findItemByRowAndColumnFactory(stockRepository).handle(req, res);
+});
+
+stockRoutes.get("/spaces/empty", (req: Request, res: Response) => {
+  return findEmptySpacesFactory(stockRepository).handle(req, res);
 });
 
 export { stockRoutes };
