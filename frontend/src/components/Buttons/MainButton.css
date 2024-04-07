@@ -1,0 +1,46 @@
+.link-button {
+    height: 100%;
+    font-size: 1rem;
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background: var(--baby-powder);
+    border: 3px solid var(--orange);
+    transition: all 0.3s ease 0s;
+}
+
+.icon-mainButton{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-mainButton img{
+    height: 90%;
+}
+
+.txt-mainButton {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--orange);
+}
+
+.link-button:hover {
+    background: var(--orange);
+    color: var(--baby-powder);
+}
+
+.link-button:hover .txt-mainButton{
+    color: var(--baby-powder);
+}

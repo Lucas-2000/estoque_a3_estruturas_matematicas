@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+:root {
+    --orange: #f96d00;
+    --raisin-black: #222831;
+    --baby-powder: #f2f2f2;
+    --beaver: #393e46;
+    --shadow-box: 5px 5px 10px rgba(0, 0, 0, .212);
+}
