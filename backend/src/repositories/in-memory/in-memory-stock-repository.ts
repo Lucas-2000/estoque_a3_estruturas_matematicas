@@ -1,5 +1,5 @@
 import { Item } from "../../entities/item";
-import { StockRepository } from "../stock-repository";
+import { ItemPosition, StockRepository } from "../stock-repository";
 
 export class InMemoryStockRepository implements StockRepository {
   private stock: (Item | null)[][];
@@ -14,10 +14,10 @@ export class InMemoryStockRepository implements StockRepository {
     this.stock[row][column] = item;
   }
 
-  async removeItem(item: Item): Promise<void> {
+  async removeItem(sku: string): Promise<void> {
     for (let i = 0; i < this.stock.length; i++) {
       for (let j = 0; j < this.stock[i].length; j++) {
-        if (this.stock[i][j] === item) {
+        if (this.stock[i][j]?.sku === sku) {
           this.stock[i][j] = null;
           return;
         }
@@ -36,11 +36,13 @@ export class InMemoryStockRepository implements StockRepository {
     this.stock[row][column] = item;
   }
 
-  async findItem(item: Item): Promise<Item | null> {
+  async findItem(
+    sku: string
+  ): Promise<{ item: Item; position: ItemPosition } | null> {
     for (let i = 0; i < this.stock.length; i++) {
       for (let j = 0; j < this.stock[i].length; j++) {
-        if (this.stock[i][j]?.sku === item.sku) {
-          return item;
+        if (this.stock[i][j]?.sku === sku) {
+          return { item: this.stock[i][j]!, position: { row: i, column: j } };
         }
       }
     }

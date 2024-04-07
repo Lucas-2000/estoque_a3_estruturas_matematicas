@@ -3,15 +3,15 @@ import { StockRepository } from "./../../../repositories/stock-repository";
 import { ItemRepository } from "./../../../repositories/item-repository";
 import { CustomError } from "./../../../utils/custom-error";
 
-interface AddItemRequest {
+interface MoveItemRequest {
   item: Item;
   row: number;
   column: number;
 }
 
-type AddItemResponse = void | CustomError;
+type MoveItemResponse = void | CustomError;
 
-export class AddItemUseCase {
+export class MoveItemUseCase {
   constructor(
     private stockRepository: StockRepository,
     private itemRepository: ItemRepository
@@ -21,7 +21,7 @@ export class AddItemUseCase {
     item,
     row,
     column,
-  }: AddItemRequest): Promise<AddItemResponse> {
+  }: MoveItemRequest): Promise<MoveItemResponse> {
     const itemExists = await this.itemRepository.findBySku(item.sku);
 
     if (!itemExists) return new CustomError(true, "Item não encontrado", 404);
@@ -39,11 +39,8 @@ export class AddItemUseCase {
     if (!isEmpty)
       return new CustomError(true, "O espaço inserido já possui um item", 400);
 
-    const itemIsAlreadyOnStock = await this.stockRepository.findItem(item.sku);
+    await this.stockRepository.moveItem(item, row, column);
 
-    if (itemIsAlreadyOnStock !== null)
-      return new CustomError(true, "O item já está no estoque", 400);
-
-    await this.stockRepository.addItem(item, row, column);
+    await this.stockRepository.removeItem(item.sku);
   }
 }
